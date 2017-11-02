@@ -23,8 +23,8 @@ int main(){
     gb = bytes;
     
     printf("File size: %dGB %dMB %dKB %dB\n",gb, mb, kb, b);
-
-    printf("File permissions: %o\n",buf.st_mode & (S_IRWXU | S_IRWXG | S_IRWXO));//bitwise and to get rid of the first 3 numbers
+    unsigned int perms_filter = 511;
+    printf("File permissions: %o\n",(buf.st_mode & perms_filter));//bitwise and to get rid of the first 3 numbers
     printf("Time last accessed: %s\n",ctime(&buf.st_atime)); 
   }
 }
